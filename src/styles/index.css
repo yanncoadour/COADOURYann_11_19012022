@@ -1,0 +1,43 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body section,
+body header {
+  max-width: 1440px;
+  padding: 0px 100px;
+}
+
+body section {
+  margin: 0px auto;
+}
+
+body header {
+  margin: 40px auto 63px auto !important;
+}
+
+@media all and (max-width: 1100px) {
+  body section,
+  body header {
+    padding: 0px 50px;
+  }
+}
+
+@media all and (max-width: 768px) {
+  body section,
+  body header {
+    padding: 0px 20px;
+  }
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
