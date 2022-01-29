@@ -9,7 +9,7 @@ class Footer extends Component {
         <figure>
           <img src={logoWhite} alt="" className="" />
         </figure>
-        <p>@2020 Kasa. All rights reserved</p>
+        <p>@2021 Kasa. All rights reserved</p>
       </footer>
     )
   }
