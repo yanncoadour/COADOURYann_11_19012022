@@ -19,4 +19,5 @@ class Annonces extends React.Component {
   }
 }
 
+
 export default (props) => <Annonces {...props} params={useParams()} />

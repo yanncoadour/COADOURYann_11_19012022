@@ -17,10 +17,11 @@ ReactDOM.render(
         <Route path="/" element={<Home />} />
         <Route path="A-Propos" element={<APropos />} />
         <Route path="Annonces/:id" element={<Annonces />} />
-        <Route path="*" element={<Error />} />
+        <Route path="/*" element={<Error />} />
       </Routes>
       <Footer />
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 )
+

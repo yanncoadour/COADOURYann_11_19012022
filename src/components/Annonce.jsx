@@ -17,11 +17,11 @@ class Annonce extends Component {
           for (var x = 0; x < 5 - logement.rating; x++) {
             nbStars.push(<img src={starGray} alt="star" key={x + 10} />)
           }
-        })
+        });
     
 
     return (
-      <React.Fragment>
+      <section className="annonces">
         {logements
           .filter((logement) => logement.id === this.props.id)
           .map((logement) => (
@@ -40,7 +40,7 @@ class Annonce extends Component {
               <p className="etoiles">{nbStars}</p>
             </React.Fragment>
           ))}
-      </React.Fragment>
+      </section>
     )
   }
 }

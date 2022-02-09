@@ -4,7 +4,6 @@ import { logements } from '../datas/logements'
 import Chevronback from '../assets/chevron-caroussel-back.svg'
 import Chevronnext from '../assets/chevron-caroussel-next.svg'
 
-let imagesCarousel = []
 class Carousel extends Component {
   constructor(props) {
     super(props)
@@ -13,54 +12,57 @@ class Carousel extends Component {
     }
   }
 
-  imagesCarouselArray = () => {
+  render() {
+    // Création d'un Array avec toutes les images
+    let imagesCarousel = []
     logements
       .filter((logement) => logement.id === this.props.id)
-      .map((logement) => {
+      .map((logement) => 
         logement.pictures.forEach((picture) => {
           imagesCarousel.push(
-            <figure key={picture}>
-              <img src={picture} alt={logement.title} />
-            </figure>
+            <img src={picture} alt={logement.title} key={picture} />
           )
         })
-      })
-  }
+      )
 
-  incrementClicks = () => {
-    if (this.state.clicks === imagesCarousel.length) {
-      this.setState({
-        clicks: this.state.clicks - imagesCarousel.length,
-      })
-    } else {
-      this.setState({
-        clicks: this.state.clicks + 1,
-      })
-    }
-  }
-  decrementClicks = () => {
-    if (this.state.clicks === 0) {
-      this.setState({
-        clicks: this.state.clicks + imagesCarousel.length,
-      })
-    } else {
-      this.setState({
-        clicks: this.state.clicks - 1,
-      })
-    }
-  }
+    const numberOfPicture = imagesCarousel.length - 1
 
-  render() {
-    
-      this.imagesCarouselArray()
-    
+    // Si c'est la dernière image aller à 0 et ajouter 1
+    const incrementClicks = () => {
+      if (this.state.clicks === numberOfPicture) {
+        this.setState({
+          clicks: this.state.clicks - numberOfPicture,
+        })
+      } else {
+        this.setState({
+          clicks: this.state.clicks + 1,
+        })
+      }
+    }
+
+    // Si c'est la premiere, aller à la dernière ou enlever 1
+    const decrementClicks = () => {
+      if (this.state.clicks === 0) {
+        this.setState({
+          clicks: this.state.clicks + numberOfPicture,
+        })
+      } else {
+        this.setState({
+          clicks: this.state.clicks - 1,
+        })
+      }
+    }
+
+    // Si il y a qu'une image ne pas afficher de bouton pour défiler les images que
+    const displayButton = imagesCarousel.length === 1 ? 'displayButton' : ''
+
     return (
       <section className="carousel">
-        {imagesCarousel[this.state.clicks]}
-        <button className="back" onClick={this.decrementClicks}>
+        <figure>{imagesCarousel[this.state.clicks]}</figure>
+        <button className={`back ${displayButton}`} onClick={decrementClicks}>
           <img src={Chevronback} alt="" />
         </button>
-        <button className="next" onClick={this.incrementClicks}>
+        <button className={`next ${displayButton}`} onClick={incrementClicks}>
           <img src={Chevronnext} alt="" />
         </button>
       </section>
